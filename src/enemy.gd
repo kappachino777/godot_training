@@ -2,6 +2,7 @@ class_name enemy
 extends RigidBody2D
 
 signal dead
+var addScore
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -20,8 +21,8 @@ func destroy():
 	emit_signal("dead")
 	hide()
 	queue_free()
+	Global.score += 1
 	$CollisionShape2D.set_deferred("disabled", true)
-	$Main.score_counter()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

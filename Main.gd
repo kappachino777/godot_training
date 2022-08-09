@@ -2,6 +2,9 @@ extends Node
 
 export(PackedScene) var mob_scene
 var score
+var enemies
+var count
+var prev
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -15,7 +18,7 @@ func _ready():
 func game_over():
 	$mobTimer.stop()
 	$HUD.show_game_over()
-	get_tree().call_group("mobs", "queue_free")
+	get_tree().call_group("enemies", "queue_free")
 
 func new_game():
 	score = 0
@@ -52,11 +55,13 @@ func _on_mobTimer_timeout():
 
 	# Spawn the mob by adding it to the Main scene.
 	add_child(mob)
+	
+
 
 
 func _on_startTimer_timeout():
 	$mobTimer.start()
 
-func score_counter():
-	score += 1
-	$HUD.update_score(score)
+func _score_counter():
+	$HUD.update_score(Global.score)
+	

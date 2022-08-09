@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://src/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/ScoreCounter.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -33,7 +34,14 @@ curve = SubResource( 1 )
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
 
+[node name="ScoreCounter" parent="." instance=ExtResource( 5 )]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
 [connection signal="hit" from="player" to="." method="game_over"]
 [connection signal="timeout" from="mobTimer" to="." method="_on_mobTimer_timeout"]
 [connection signal="timeout" from="startTimer" to="." method="_on_startTimer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
+[connection signal="timeout" from="Timer" to="." method="_score_counter"]

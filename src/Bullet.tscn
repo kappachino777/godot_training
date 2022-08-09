@@ -19,17 +19,19 @@ radius = 1.99997
 height = 16.0
 
 [sub_resource type="CapsuleShape2D" id=3]
-radius = 3.0
-height = 18.0
+radius = 7.99992
+height = 56.0002
 
 [node name="bullet" type="RigidBody2D"]
 gravity_scale = 0.0
 script = ExtResource( 5 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -1.25 )
-scale = Vector2( 0.1, 0.1 )
+position = Vector2( 0, -3.5 )
+scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 1 )
+frame = 1
+speed_scale = 3.0
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

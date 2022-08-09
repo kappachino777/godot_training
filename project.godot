@@ -30,6 +30,11 @@ config/name="Try 2"
 run/main_scene="res://src/Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://src/Global.tscn"
+ScoreCounter="*res://src/ScoreCounter.gd"
+
 [display]
 
 window/size/height=1024
